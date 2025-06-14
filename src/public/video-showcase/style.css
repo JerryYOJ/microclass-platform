@@ -1,0 +1,647 @@
+/* style.css */
+
+/* --- Google Fonts Import (Optional but Recommended) --- */
+/* If you included the <link> tag in your HTML, these fonts will be available */
+/* font-family: 'Montserrat', sans-serif; (for headings) */
+/* font-family: 'Open Sans', sans-serif; (for body text) */
+/* Make sure you include this in your HTML <head> if you want to use them:
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+*/
+
+/* --- CSS Variables --- */
+:root {
+    --primary-color: #007bff;   /* Bright Blue (for buttons, highlights) */
+    --secondary-color: #6c757d; /* Muted Gray (for secondary text) */
+    --accent-color: #28a745;    /* Green (general accent/awards if not tier-specific) */
+
+    --background-light: #f8f9fa; /* Light background for sections */
+    --background-dark: #343a40;  /* Dark background for header/footer */
+
+    --text-dark: #212529;      /* Dark text color for most content */
+    --text-light: #f8f9fa;     /* Light text color for dark backgrounds */
+    --card-bg: #ffffff;        /* Background for video cards */
+    --border-color: #dee2e6;   /* Border color for separators */
+    --shadow-light: rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+
+    --transition-speed: 0.3s; /* Standard transition duration */
+
+    /* Award-specific colors (these will now primarily be used for badges/accents) */
+    --gold-award: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00); /* Vivid gold gradient for first prize */
+    --silver-award: linear-gradient(135deg, #E8E8E8, #C0C0C0, #A8A8A8); /* Vivid silver gradient for second prize */
+    --bronze-award: linear-gradient(135deg, #CD7F32, #B8860B, #A0522D); /* Vivid bronze gradient for third prize */
+}
+
+/* --- Base Styles & Resets --- */
+*, *::before, *::after {
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Default body font */
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    -webkit-font-smoothing: antialiased; /* Better font rendering on WebKit browsers */
+    -moz-osx-font-smoothing: grayscale; /* Better font rendering on Firefox */
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: #0056b3; /* A slightly darker blue for hover */
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below images */
+}
+
+/* --- Utility Classes --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Add horizontal padding for smaller screens */
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    transition: all var(--transition-speed) ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* A slightly darker blue for hover */
+    color: var(--text-light); /* Explicitly keep the text color light on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px var(--shadow-light);
+    position: sticky; /* Sticky header */
+    top: 0;
+    z-index: 1000; /* Ensure header is on top */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: center; /* Center the title now that nav is removed */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.site-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-light);
+    margin: 0;
+    text-align: center; /* Ensure title is centered */
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    /* Updated: Ensuring .jpeg extension for the background image */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('hero-background.jpeg') no-repeat center center/cover;
+    /* IMPORTANT: Replace '/hero-background.jpeg' with your actual image path in src/public/ */
+
+    color: var(--text-light);
+    text-align: center;
+    padding: 100px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px; /* Ensure a minimum height */
+}
+
+.hero-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle text shadow */
+}
+
+.hero-section p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+/* --- Award Sections General Styling --- */
+.award-section {
+    padding: 60px 0; /* Consistent padding for all award sections */
+
+    /* NEW: Pure white background for all award sections */
+    background-color: #ffffff;
+    /* Ensure text is dark for readability on the white background */
+    color: var(--text-dark);
+}
+
+.award-section h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--text-dark); /* Ensure heading is dark for readability on white */
+    position: relative;
+    padding-bottom: 10px;
+    /* Removed text-shadow as it's less necessary on a plain white background */
+}
+
+.award-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color); /* Primary color underline for contrast */
+    border-radius: 2px;
+}
+
+/* --- Specific Award Section Backgrounds & Headings (These are now redundant for backgrounds) --- */
+/* Kept the empty rules as a placeholder if you want to add specific borders or small details later. */
+.first-prize-bg {
+    /* Background is now controlled by .award-section */
+}
+.first-prize-bg h3 {
+    /* Color is now controlled by .award-section */
+}
+.first-prize-bg h3::after {
+    /* Background color is now controlled by .award-section */
+}
+
+.second-prize-bg {
+    /* Background is now controlled by .award-section */
+}
+.second-prize-bg h3::after {
+    /* Background color is now controlled by .award-section */
+}
+
+.third-prize-bg {
+    /* Background is now controlled by .award-section */
+}
+.third-prize-bg h3::after {
+    /* Background color is now controlled by .award-section */
+}
+
+
+/* --- Video Grid General Styling (Applies to all sections using .video-grid-section) --- */
+.video-grid-section {
+    padding: 60px 0; /* Consistent padding with award-section */
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    justify-content: start;
+}
+
+.video-card {
+    max-width: 350px;
+    background-color: var(--card-bg); /* Cards will remain light */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+}
+
+.video-card:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    padding-bottom: 50%;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image covers the area without distortion */
+    transition: transform var(--transition-speed) ease;
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05); /* Slight zoom on image on hover */
+}
+
+.video-thumbnail .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Dark overlay like YouTube */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.video-card:hover .video-thumbnail .overlay {
+    opacity: 1;
+}
+
+.video-thumbnail .play-icon {
+    width: 48px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Create YouTube-style play triangle using CSS */
+.video-thumbnail .play-icon::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 12px solid #212121; /* Dark triangle */
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    margin-left: 2px; /* Slight offset to center visually */
+}
+
+.video-card:hover .video-thumbnail .play-icon {
+    background-color: #ff0000; /* YouTube red on hover */
+    transform: scale(1.1);
+}
+
+.video-card:hover .video-thumbnail .play-icon::before {
+    border-left-color: white; /* White triangle on hover */
+}
+
+.video-info {
+    padding: 16px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.video-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.video-school,
+.video-author {
+    font-size: 0.85em;
+    color: var(--secondary-color);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.video-school {
+    color: #666;
+}
+
+.video-author {
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.award-badge {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.75em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 4px;
+}
+
+/* Custom badge colors/icons for specific awards */
+.award-badge[class*="一等奖"],
+.award-badge-first {
+    background: var(--gold-award);
+    color: var(--text-dark); /* Dark text on gold for better contrast */
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    border: 1px solid #FFD700;
+}
+.award-badge[class*="二等奖"],
+.award-badge-second {
+    background: var(--silver-award);
+    color: var(--text-dark);
+    box-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
+    border: 1px solid #C0C0C0;
+}
+.award-badge[class*="三等奖"],
+.award-badge-third {
+    background: var(--bronze-award);
+    color: var(--text-light);
+    box-shadow: 0 2px 8px rgba(205, 127, 50, 0.3);
+    border: 1px solid #CD7F32;
+}
+
+/* Update trophy emojis based on badge text (Unicode character) */
+.award-badge[class*="一等奖"]::before,
+.award-badge-first::before { content: '🏆'; margin-right: 3px; font-size: 1em;} /* Gold trophy */
+.award-badge[class*="二等奖"]::before,
+.award-badge-second::before { content: '🥈'; margin-right: 3px; font-size: 1em;} /* Silver medal */
+.award-badge[class*="三等奖"]::before,
+.award-badge-third::before { content: '🥉'; margin-right: 3px; font-size: 1em;} /* Bronze medal */
+
+/* Loading and error states */
+.loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--secondary-color);
+    font-size: 1.1em;
+}
+
+.no-videos {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+.error-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--background-dark);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 5px var(--shadow-light);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .hero-section h2 {
+        font-size: 2.8em;
+    }
+    .hero-section p {
+        font-size: 1.1em;
+    }
+    .award-section h3 {
+        font-size: 2em;
+    }
+}
+
+/* Video Modal Styles */
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
+}
+
+.video-modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-modal-content {
+    position: relative;
+    background-color: #fff;
+    border-radius: 12px;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 800px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    animation: slideIn 0.3s ease;
+}
+
+.video-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.video-modal-close:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    background-color: #000;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    display: block;
+}
+
+.video-modal-info {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.video-modal-info h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.5em;
+    color: #333;
+    font-weight: 600;
+}
+
+.video-modal-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.video-modal-details p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95em;
+}
+
+.video-modal-details span {
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+/* Modal animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .site-title {
+        margin-bottom: 15px;
+    }
+
+    .hero-section {
+        min-height: 400px;
+        padding: 70px 20px;
+    }
+    .hero-section h2 {
+        font-size: 2.5em;
+    }
+    .hero-section p {
+        font-size: 1em;
+    }
+    .video-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+        gap: 20px;
+    }
+    
+    .video-card {
+        max-width: 100%;
+    }
+    
+    .video-card .overlay .play-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .video-card .overlay .play-icon::before {
+        border-left: 15px solid #333;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        margin-left: 3px;
+    }
+    
+    .video-modal-content {
+        width: 95vw;
+        max-height: 95vh;
+    }
+    
+    .video-modal-info {
+        padding: 15px;
+    }
+    
+    .video-modal-info h3 {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h2 {
+        font-size: 2em;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .video-title {
+        font-size: 1.2em;
+    }
+    .award-badge {
+        padding: 3px 8px; /* Slightly smaller badge on very small screens */
+        font-size: 0.75em;
+    }
+}

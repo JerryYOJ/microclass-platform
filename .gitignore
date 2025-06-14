@@ -1,0 +1,33 @@
+# Node.js specific files and directories
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+.yarn/
+/coverage
+/.nyc_output
+/dist/
+/build/
+
+# Environment variables
+.env
+.env.* # Ignore all files starting with .env. (e.g., .env.development, .env.production)
+
+# Logs
+*.log
+logs/
+
+# IDE and OS specific files
+.DS_Store             # macOS
+.vscode/              # Visual Studio Code settings (can be useful to share some configs, but not all)
+.idea/                # IntelliJ IDEA
+*.sublime-project
+*.sublime-workspace
+Thumbs.db             # Windows
+ehthumbs.db
+Desktop.ini
+
+# Package Manager Cache
+.npmrc                # npm config file if it contains personal tokens
+.yarnrc

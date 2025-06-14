@@ -1,0 +1,27 @@
+{
+  "name": "microclass-platform",
+  "version": "1.0.0",
+  "description": "A website for microclass competition",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [
+    "express",
+    "video",
+    "contest",
+    "educational",
+    "microclass"
+  ],
+  "author": "JerryYOJ",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.9",
+    "express": "^5.1.0",
+    "fluent-ffmpeg": "^2.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

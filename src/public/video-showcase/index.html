@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e 创智课微课比赛</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="frontend.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="site-title">e 创智课微课比赛</h1>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero-section" class="hero-section">
+            <div class="container">
+                <h2>获奖作品展示</h2>
+                <p>探索屡获殊荣的微课作品, 感受教育创新的无限魅力</p>
+                <a href="#first-prize" class="btn btn-primary">立即观看</a>
+            </div>
+        </section>
+
+        <section id="first-prize" class="video-grid-section award-section first-prize-bg">
+            <div class="container">
+                <h3>一等奖作品</h3>
+                <div class="video-grid">
+                    <!-- Videos will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <section id="second-prize" class="video-grid-section award-section second-prize-bg">
+            <div class="container">
+                <h3>二等奖作品</h3>
+                <div class="video-grid">
+                    <!-- Videos will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <section id="third-prize" class="video-grid-section award-section third-prize-bg">
+            <div class="container">
+                <h3>三等奖作品</h3>
+                <div class="video-grid">
+                    <!-- Videos will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-modal-close">&times;</span>
+            <div class="video-container">
+                <video id="modal-video" controls>
+                    <source src="" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+            </div>
+            <div class="video-modal-info">
+                <h3 id="modal-video-title"></h3>
+                <div class="video-modal-details">
+                    <p id="modal-video-school"></p>
+                    <p id="modal-video-author"></p>
+                    <span id="modal-video-badge"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 e 创智课微课比赛 版权所有。</p>
+        </div>
+    </footer>
+</body>
+</html>

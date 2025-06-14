@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  microclass-platform:
+    image: microclass-platform:1.0.0
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount local videos directory to container
+      - ./videos:/app/src/public/video-showcase/videos
+      # Optional: Mount .env file for environment variables
+      #- ./.env:/app/.env:ro
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
+    container_name: microclass-platform
