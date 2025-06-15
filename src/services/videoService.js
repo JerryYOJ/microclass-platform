@@ -6,24 +6,23 @@ const config = require('../config/config');
 class VideoService {
   generateThumbnail(videoPath) {
     return new Promise((resolve, reject) => {
-      const tempPath = path.join(__dirname, `temp.jpg`);
+      const chunks = [];
       
       ffmpeg(videoPath)
-        .screenshots({
-          timestamps: config.thumbnailSettings.timestamps,
-          size: config.thumbnailSettings.size,
-          filename: path.basename(tempPath),
-          folder: path.dirname(tempPath)
+        .seekInput('00:00:01')
+        .frames(1)
+        .format('image2')
+        .size(config.thumbnailSettings.size)
+        .outputOptions('-f', 'image2pipe')
+        .outputOptions('-vcodec', 'mjpeg')
+        .pipe()
+        .on('data', (chunk) => {
+          chunks.push(chunk);
         })
-        .on('end', async () => {
-          try {
-            const buffer = await fs.readFile(tempPath);
-            await fs.unlink(tempPath); // Clean up temp file
-            console.log(`Thumbnail buffer generated for: ${videoPath}`);
-            resolve(buffer);
-          } catch (err) {
-            reject(err);
-          }
+        .on('end', () => {
+          const buffer = Buffer.concat(chunks);
+          console.log(`Thumbnail buffer generated for: ${videoPath}`);
+          resolve(buffer);
         })
         .on('error', (err) => {
           console.error(`Error generating thumbnail buffer for ${videoPath}:`, err.message);

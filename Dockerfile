@@ -1,6 +1,6 @@
 # Stage 1: Use a lightweight Node.js image as the base
 # We choose a specific Node.js version (e.g., 20) and Alpine Linux for smaller image size.
-FROM node:20-alpine
+FROM node:22-alpine
 
 # Set the working directory inside the container
 # All subsequent commands will be executed relative to this directory.
