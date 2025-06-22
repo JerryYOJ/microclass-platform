@@ -31,7 +31,7 @@ function createVideoCard(video) {
       <div class="video-info">
         <h4 class="video-title">${video.title}</h4>
         <div class="video-details">
-          <p class="video-school">学校：${video.school}</p>
+          <p class="video-school">学院：${video.school}</p>
           <p class="video-author">作者：${video.author}</p>
           <span class="award-badge ${awardConfig.badgeClass}">${awardConfig.badge}</span>
         </div>
