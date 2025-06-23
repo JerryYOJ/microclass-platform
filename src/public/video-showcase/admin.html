@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频管理后台 - e 创智课微课比赛</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="site-title">视频管理后台</h1>
+            <nav>
+                <a href="index.html" class="btn btn-secondary">返回展示页</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <div class="container">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <h2>上传新视频</h2>
+                <form id="upload-form" class="upload-form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="video-file">选择视频文件:</label>
+                        <input type="file" id="video-file" name="video" accept=".mp4,.webm,.ogg,.avi,.mov" required>
+                        <small class="help-text">支持格式: MP4, WebM, OGG, AVI, MOV</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="video-title">视频标题:</label>
+                        <input type="text" id="video-title" name="title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="video-prize">奖项类型:</label>
+                        <select id="video-prize" name="prizeType" required>
+                            <option value="">请选择奖项</option>
+                            <option value="first">一等奖</option>
+                            <option value="second">二等奖</option>
+                            <option value="third">三等奖</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="video-school">学校:</label>
+                        <input type="text" id="video-school" name="school" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="video-author">作者:</label>
+                        <input type="text" id="video-author" name="author" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">上传视频</button>
+                </form>
+            </section>
+
+            <!-- Video Management Section -->
+            <section class="management-section">
+                <h2>视频管理</h2>
+                <div class="video-list" id="video-list">
+                    <!-- Videos will be loaded dynamically -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>编辑视频信息</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="edit-form" class="edit-form">
+                <input type="hidden" id="edit-video-id" name="videoId">
+                
+                <div class="form-group">
+                    <label for="edit-title">视频标题:</label>
+                    <input type="text" id="edit-title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-prize">奖项类型:</label>
+                    <select id="edit-prize" name="prizeType" required>
+                        <option value="first">一等奖</option>
+                        <option value="second">二等奖</option>
+                        <option value="third">三等奖</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-school">学校:</label>
+                    <input type="text" id="edit-school" name="school" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-author">作者:</label>
+                    <input type="text" id="edit-author" name="author" required>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-edit">取消</button>
+                    <button type="submit" class="btn btn-primary">保存更改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>处理中...</p>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
